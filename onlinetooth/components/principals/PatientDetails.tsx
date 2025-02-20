@@ -1,12 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  Tabs,
-  TabsList,
-  TabsTrigger,
-  TabsContent,
-} from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import PatientTreatmentsPage from "./PatientTreatment";
 import PatientFormsPage from "./patientForms";
 
@@ -45,7 +40,7 @@ export default function PatientDetails({
   const currentPatient = patient ?? mockPatientData;
 
   return (
-    <div className="flex flex-col w-full h-full p-6 bg-gray-100">
+    <div className="flex flex-col w-full h-full p-6">
       {/* Botão de Voltar (opcional) */}
       {onBack && (
         <button
@@ -68,7 +63,7 @@ export default function PatientDetails({
       </div>
 
       {/* Abas principais (o defaultValue="resumo" garante que abra no Resumo) */}
-      <div className="mt-4 bg-white rounded shadow p-4 flex-1">
+      <div className="mt-4 bg-white rounded shadow p-4 flex flex-1">
         <Tabs defaultValue="resumo" className="w-full h-full flex flex-col">
           <TabsList className="mb-4">
             <TabsTrigger value="resumo">Resumo</TabsTrigger>
@@ -79,16 +74,24 @@ export default function PatientDetails({
           {/* ABA: RESUMO */}
           <TabsContent value="resumo" className="flex flex-col gap-4">
             {/* Layout em colunas/cards */}
-            <div className="grid grid-cols-12 gap-4">
+            <div className="grid grid-cols-12 gap-4 w-full">
               {/* Coluna 1 (4 colunas em telas md+) */}
               <div className="col-span-12 md:col-span-4 flex flex-col gap-4">
                 {/* Card de dados pessoais */}
                 <div className="bg-gray-50 rounded p-4 shadow">
                   <h2 className="text-lg font-semibold mb-2">Dados pessoais</h2>
-                  <p><strong>Nome:</strong> {currentPatient.name}</p>
-                  <p><strong>Telefone:</strong> {currentPatient.phone}</p>
-                  <p><strong>E-mail:</strong> {currentPatient.email}</p>
-                  <p><strong>Plano:</strong> {currentPatient.plan}</p>
+                  <p>
+                    <strong>Nome:</strong> {currentPatient.name}
+                  </p>
+                  <p>
+                    <strong>Telefone:</strong> {currentPatient.phone}
+                  </p>
+                  <p>
+                    <strong>E-mail:</strong> {currentPatient.email}
+                  </p>
+                  <p>
+                    <strong>Plano:</strong> {currentPatient.plan}
+                  </p>
                 </div>
 
                 {/* Card de comunicação */}
@@ -117,8 +120,8 @@ export default function PatientDetails({
                   <h2 className="text-lg font-semibold mb-2">Mensagens</h2>
                   <div className="border border-gray-200 p-2 rounded text-sm">
                     <p>
-                      O paciente agendou a consulta somente para o mês seguinte. É
-                      importante verificar se ele já fez os exames...
+                      O paciente agendou a consulta somente para o mês seguinte.
+                      É importante verificar se ele já fez os exames...
                     </p>
                   </div>
                   <textarea
@@ -135,7 +138,7 @@ export default function PatientDetails({
 
           {/* Outras abas (placeholders) */}
           <TabsContent value="tratamentos">
-            <PatientTreatmentsPage />
+            <PatientTreatmentsPage patient={currentPatient} />
           </TabsContent>
           <TabsContent value="anamnese">
             <PatientFormsPage />

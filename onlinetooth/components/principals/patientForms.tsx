@@ -13,7 +13,6 @@ interface Form {
 
 export default function PatientFormsPage() {
 
-    const [selectedForm, setSelectedForm] = useState<Form | undefined>(undefined);
     const [formData, setFormData] = useState({
         queixaPrincipal: "",
         historicoMedico: "",
@@ -35,8 +34,7 @@ export default function PatientFormsPage() {
       };
 
     const AnalisisForm: Form[] = [
-            { id: 1, name: "Anamnese de HOF"  },
-            { id: 2, name: "Anamnese Ortodôntica"},
+            { id: 1, name: "Anamnese"  },
             // ...
           ];
         
@@ -146,7 +144,6 @@ export default function PatientFormsPage() {
             <span>{form.name}</span>
             <button
               className="bg-teal-300 text-white px-3 py-1 rounded"
-              onClick={() => setSelectedForm(form)}
             >
               Ver detalhes
             </button>
