@@ -259,7 +259,7 @@ export default function CalendarComponent() {
         endAccessor="end"
         defaultView="week"
         messages={messages}
-        className="flex w-full m-0 h-[95$] bg-white"
+        className="flex w-full m-0 h-[95$] bg-white "
       />
     </div>
   );
